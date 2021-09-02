@@ -207,13 +207,58 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _showDrawDialog() {
-    
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('DRAW'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Play Again!'),
+                onPressed: () {
+                  _clearBoard();
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
   }
 
   void _showWinDialog(String winner) {
+    showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('WINNER IS: ' + winner.toUpperCase()),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('Play Again!'),
+                onPressed: () {
+                  _clearBoard();
+                  Navigator.of(context).pop();
+                },
+              )
+            ],
+          );
+        });
 
+    if (winner == 'o') {
+      ohScore += 1;
+    } else if (winner == 'x') {
+      exScore += 1;
+    }
   }
 
+  void _clearBoard() {
+    setState(() {
+      for (int i = 0; i < 9; i++) {
+        displayExOh[i] = '';
+      }
+    });
 
-  
+    filledBoxes = 0;
+  }
 }

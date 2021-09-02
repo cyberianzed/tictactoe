@@ -1,7 +1,7 @@
 name: tictactoe
-description: A Flutter application.
+description: A Flutter application for Tinkerhub.
 
-version: 1.0.0+1
+version: 1.2.0
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
